@@ -25,6 +25,26 @@
        @empty
        <span class="badge text-bg-secondary">No Techs selected</span>
        @endforelse
+
+       @if ($project->messages->count())
+         <hr>
+         <div>
+          <h3>Messages:</h3>
+          <ul>
+            @foreach ($project->messages as $message)
+                <li>
+                  <h5 class="text-primary">{{$message->author}}</h5>
+                  <div>{{$message->message}}</div>
+                  <form action="{{route('admin.messages.destroy', $message)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="Delete Message" class="btn btn-danger btn-sm">
+                  </form>
+                </li>
+            @endforeach
+          </ul>
+         </div>
+       @endif
         
       </div>
     </div>

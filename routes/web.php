@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashBoardController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
@@ -33,6 +34,8 @@ Route::middleware('auth', 'verified')->prefix('admin')->name('admin.')->group(fu
     Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
     Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
 
+    //MESSAGES
+    Route::delete('messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

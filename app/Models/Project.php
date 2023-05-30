@@ -22,6 +22,11 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(
