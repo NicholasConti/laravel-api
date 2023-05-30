@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewMessage;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -24,6 +26,7 @@ class MessageController extends Controller
         $message->project_id = $data['project_id'];
         $message->save();
 
+        Mail::to('prova@boolpress.it')->send(new NewMessage($message));
         return $message;
     }
 }
