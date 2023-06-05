@@ -19,14 +19,14 @@ class MessageController extends Controller
             'project_id' => 'integer|exists:projects,id'
         ]);
 
-        $message = new Message();
-        $message->author = $data['author'];
-        $message->email = $data['email'];
-        $message->message = $data['message'];
-        $message->project_id = $data['project_id'];
-        $message->save();
+        $msg = new Message();
+        $msg->author = $data['author'];
+        $msg->email = $data['email'];
+        $msg->message = $data['message'];
+        $msg->project_id = $data['project_id'];
+        $msg->save();
 
-        Mail::to('prova@boolpress.it')->send(new NewMessage($message));
-        return $message;
+        Mail::to('info@boolpress.it')->send(new NewMessage($msg));
+        return $msg;
     }
 }

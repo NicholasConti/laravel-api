@@ -13,7 +13,7 @@ class NewMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    public $msg;
 
     /**
      * Create a new message instance.
@@ -22,7 +22,7 @@ class NewMessage extends Mailable
      */
     public function __construct($_message)
     {
-        $this->message = $_message;
+        $this->msg = $_message;
     }
 
     /**
@@ -34,7 +34,7 @@ class NewMessage extends Mailable
     {
         return new Envelope(
             replyTo: 'info@boolpress.it',
-            subject: 'New Message!!!',
+            subject: 'New Message',
         );
     }
 
